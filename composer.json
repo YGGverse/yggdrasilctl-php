@@ -1,0 +1,13 @@
+{
+    "name": "yggverse/yggdrasilctl",
+    "description": "PHP library for yggdrasilctl",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yggverse\\Yggdrasilctl\\": "src/"
+        }
+    },
+    "minimum-stability": "alpha",
+    "require": {}
+}
