@@ -41,13 +41,13 @@ class Yggdrasil
     {
       switch (false)
       {
-        case  isset($peer->bytes_recvd):
-        case  isset($peer->bytes_sent):
-        case  isset($peer->remote):
-        case  isset($peer->port):
-        case  isset($peer->key):
-        case  isset($peer->uptime):
-        case !empty($peer->coords):
+        case isset($peer->bytes_recvd):
+        case isset($peer->bytes_sent):
+        case isset($peer->remote):
+        case isset($peer->port):
+        case isset($peer->key):
+        case isset($peer->uptime):
+        case isset($peer->coords):
 
           return false;
       }
