@@ -4,7 +4,16 @@ PHP library for [Yggdrasil](https://github.com/yggdrasil-network/)
 
 ### Usage
 
-Get peers
+#### Get peers
+
+##### Attributes
+
+* `debug` - array of details for each peer that does not match condition bellow
+* `require` - array of required fields that peer must to contain or skip in result
+
+##### Example
+
+Returns peers that contain `remote` and `uptime` fields, skip other
 
 ```
 $debug = [];
