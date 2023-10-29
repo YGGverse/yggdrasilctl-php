@@ -6,10 +6,28 @@ PHP library for [Yggdrasil](https://github.com/yggdrasil-network/)
 
 #### Get peers
 
+```
+\Yggverse\Yggdrasilctl\Yggdrasil::getPeers(
+  array &$debug  = [],
+  array $require = [
+    'remote',
+    'up',
+    'inbound',
+    'address',
+    'port',
+    'key',
+    'priority',
+    'bytes_recvd',
+    'bytes_sent',
+    'uptime'
+  ]
+)
+```
+
 ##### Attributes
 
-* `debug` - array of details for each peer that does not match condition bellow
-* `require` - array of required fields that peer must to contain or skip in result
+* `debug` - optional array of details for each peer that does not match condition bellow
+* `require` - optional array of required fields that peer must to contain or skip in result
 
 ##### Example
 
