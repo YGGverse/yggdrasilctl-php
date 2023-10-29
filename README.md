@@ -2,6 +2,25 @@
 
 PHP library for [Yggdrasil](https://github.com/yggdrasil-network/)
 
+### Usage
+
+Get peers
+
+```
+$debug = [];
+
+if (false === $peers = \Yggverse\Yggdrasilctl\Yggdrasil::getPeers($debug, ['remote', 'uptime']))
+{
+  print_r(
+    $debug
+  );
+}
+
+print_r(
+  $peers
+);
+```
+
 ### Compatibility
 
 * 0.5.1
