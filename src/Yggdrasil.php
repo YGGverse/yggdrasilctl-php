@@ -4,10 +4,11 @@ namespace Yggverse\Yggdrasilctl;
 
 class Yggdrasil
 {
-   private static function _exec(string $cmd) : mixed
-   {
-
-    if (false !== exec('yggdrasilctl -json getPeers', $output))
+  private static function _exec(
+    string $command
+  ): mixed
+  {
+    if (false !== exec(sprintf('yggdrasilctl -json %s', $command), $output))
     {
       $rows = [];
 
@@ -25,34 +26,44 @@ class Yggdrasil
     return false;
   }
 
-  public static function getPeers() : mixed
+  public static function getPeers(
+    array &$debug  = [],
+    array $require = [
+      'remote',
+      'up',
+      'inbound',
+      'address',
+      'port',
+      'key',
+      'priority',
+      'bytes_recvd',
+      'bytes_sent',
+      'uptime'
+    ]
+  ) : mixed
   {
-    if (false === $result = self::_exec('yggdrasilctl -json getPeers'))
+    if (false === $result = self::_exec('getPeers'))
     {
       return false;
     }
 
-    if (empty($result->peers))
-    {
-      return false;
-    }
+    $peers = [];
 
-    foreach ((object) $result->peers as $peer)
+    foreach ((object) $result->peers as $i => $peer)
     {
-      switch (false)
+      foreach ($require as $field)
       {
-        case isset($peer->bytes_recvd):
-        case isset($peer->bytes_sent):
-        case isset($peer->remote):
-        case isset($peer->port):
-        case isset($peer->key):
-        case isset($peer->uptime):
-        case isset($peer->coords):
+        if (!isset($peer->{$field}))
+        {
+          $debug[$i][$field] = _('empty');
 
-          return false;
+          continue 2;
+        }
       }
+
+      $peers[] = $peer;
     }
 
-    return $result->peers;
+    return (object) $peers;
   }
 }
