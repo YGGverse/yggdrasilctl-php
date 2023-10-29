@@ -11,14 +11,10 @@ $debug = [];
 
 if (false === $peers = \Yggverse\Yggdrasilctl\Yggdrasil::getPeers($debug, ['remote', 'uptime']))
 {
-  print_r(
-    $debug
-  );
+  var_dump($debug);
 }
 
-print_r(
-  $peers
-);
+var_dump($peers);
 ```
 
 ### Compatibility
