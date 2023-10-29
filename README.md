@@ -1,6 +1,6 @@
 # yggdrasilctl-php
 
-PHP library for Yggdrasil
+PHP library for [Yggdrasil](https://github.com/yggdrasil-network/)
 
 ### Yggdrasil compatibility
 
